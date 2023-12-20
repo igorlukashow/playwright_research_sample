@@ -4,7 +4,7 @@ To run tests follow the next steps
 
 2. Install modules
 
-> npm install
+> npm i
 
 3. To run tests 
 > npx playwright test
