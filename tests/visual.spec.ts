@@ -11,15 +11,20 @@ const desktopViewports = [
 
 for (const viewport of desktopViewports) {
     test.use({ viewport });
-    test(`Test size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
-        await page.goto('https://www.scentbird.com/gift?months=6')
-        await expect(page).toHaveScreenshot(
-           /* {
-            mask: [page.locator("div[id='ddv1-captcha-container']")],
-            maskColor: '#FF00FF',
-            fullPage: true,
-            maxDiffPixelRatio: 0.02,
-             }*/
-             );
+    test(`Google test size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
+        await page.goto('https://www.google.com/search?q=scentbird')
+        await expect(page.locator('div.IsZvec>div>span')).toHaveScreenshot(`screenshot${viewport.width}.png`, {maxDiffPixelRatio: 0.02});
     })
  }    
+
+for (const viewport of desktopViewports) {
+  test.use({ viewport });
+  test(`Scentbird Test size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
+      await page.goto('https://www.scentbird.com/gift?months=6')
+      await expect(page).toHaveScreenshot(
+          {
+          fullPage: true,
+          maxDiffPixelRatio: 0.02,
+           });
+  })
+}
