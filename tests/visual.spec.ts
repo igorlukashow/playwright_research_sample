@@ -11,20 +11,20 @@ const desktopViewports = [
 
 for (const viewport of desktopViewports) {
     test.use({ viewport });
-    test(`Google test size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
+    test(`Google | Test element using size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
         await page.goto('https://www.google.com/search?q=scentbird')
-        await expect(page.locator('div.IsZvec>div>span')).toHaveScreenshot(`screenshot${viewport.width}.png`, {maxDiffPixelRatio: 0.02});
+        await expect(page.locator('div.IsZvec>div>span')).toHaveScreenshot(`screenshot${viewport.width}.png`, {maxDiffPixelRatio: 0.00});
     })
  }    
 
 for (const viewport of desktopViewports) {
   test.use({ viewport });
-  test(`Scentbird Test size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
+  test(`Scentbird | Test full page using size w:${viewport.width} h:${viewport.height}`, async ({page}) => {
       await page.goto('https://www.scentbird.com/gift?months=6')
       await expect(page).toHaveScreenshot(
           {
           fullPage: true,
-          maxDiffPixelRatio: 0.02,
+          maxDiffPixelRatio: 0.00,
            });
   })
 }
