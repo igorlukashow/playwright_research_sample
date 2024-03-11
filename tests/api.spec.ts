@@ -20,19 +20,19 @@ test('check status code for growthbook api', async () => {
   expect(response.ok()).toBeTruthy();
 });
 
-test('assert body item in growthbook api response', async () => {
+test('check body item in growthbook api response', async () => {
     const response = await apiContext.get('/');
     const responseBody = JSON.parse(await response.text())
     expect(responseBody.name).toBe('GrowthBook API');
 });
 
-test('assert header in growthbook api response', async () => {
+test('check header in growthbook api response', async () => {
     const response = await apiContext.get('/api/features/sdk-KGr6Xvp98rFYGM1N');
     const responseHeaders = await response.headers();
     expect(responseHeaders['x-powered-by']).toContain("Express");
 });
 
-test('401 on post request', async () => {
+test('check status 401 on post request', async () => {
     const response = await apiContext.post('/api/features/sdk-KGr6Xvp98rFYGM1N', {
     data: {
             text: 'heyguys', 
